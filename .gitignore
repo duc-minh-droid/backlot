@@ -1,0 +1,13 @@
+# Dependencies (node_modules is a junction to a folder outside OneDrive)
+node_modules/
+dist/
+*.tsbuildinfo
+
+# Generated images from local runs
+outputs/
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

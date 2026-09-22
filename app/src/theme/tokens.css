@@ -1,0 +1,144 @@
+/* The chrome recedes: this app displays generated images, so nothing here competes with
+   them. Colour carries one meaning only, stated in the legend:
+     amber = time passing with nothing measuring it
+     teal  = time passing with a true fraction
+     blue  = work we did not have to do
+   Every state also has a glyph and a word, so colour is never the sole carrier. */
+
+:root {
+  --bg-0: #0a0b0d;
+  --bg-1: #101214;
+  --bg-2: #15181c;
+  --bg-3: #1b1f24;
+  --line-1: #22272e;
+  --line-2: #2e353e;
+  --text-1: #e7ebf0;
+  --text-2: #9aa4b2;
+  --text-3: #5f6975;
+
+  --accent: #4cc2a0;
+  --accent-dim: #2a6b58;
+  --accent-bg: #0e1a17;
+  --load: #d8873f;
+  --load-text: #f0b278;
+  --load-bg: #1b1710;
+  --cache: #6e8bd6;
+  --cache-text: #8fa6d6;
+  --cache-bg: #101318;
+  --danger: #e0564b;
+  --danger-text: #ff9084;
+  --danger-bg: #1e1211;
+  --neutral: #4a515b;
+  --focus: #7aa2f7;
+
+  /* The canvas surround never takes the theme's hue, in either mode: a generated image
+     must not be colour-judged against a tinted field. */
+  --canvas-bg: #0a0b0d;
+
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 14px;
+  --r-xl: 20px;
+
+  --font-ui: 'Inter var', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Mono', 'SF Mono', Menlo, monospace;
+
+  color-scheme: dark;
+}
+
+:root[data-theme='light'] {
+  --bg-0: #f2f3f5;
+  --bg-1: #ffffff;
+  --bg-2: #f7f8fa;
+  --bg-3: #edeff3;
+  --line-1: #e1e4e9;
+  --line-2: #cbd1d9;
+  --text-1: #14171a;
+  --text-2: #566070;
+  --text-3: #808a97;
+
+  --accent: #12876b;
+  --accent-dim: #a8dbcb;
+  --accent-bg: #ebf7f3;
+  --load: #a25e17;
+  --load-text: #7a4610;
+  --load-bg: #fcf4ea;
+  --cache: #3a5fb8;
+  --cache-text: #3a5fb8;
+  --cache-bg: #eff3fc;
+  --danger: #b3271c;
+  --danger-text: #8e1f16;
+  --danger-bg: #fdf0ee;
+  --neutral: #7a828d;
+  --focus: #2757c4;
+
+  --canvas-bg: #e8eaed;
+
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-0);
+  color: var(--text-1);
+  font-family: var(--font-ui);
+  font-size: 14px;
+  line-height: 20px;
+  /* The page itself never scrolls; only the log console and traceback do. */
+  overflow: hidden;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+/* Never `outline: none` anywhere in this codebase. */
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: inherit;
+}
+
+.num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.unit {
+  font-size: 0.82em;
+  font-weight: 400;
+  color: var(--text-3);
+}
+
+.label-xs {
+  font-size: 11px;
+  line-height: 15px;
+  font-weight: 560;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
