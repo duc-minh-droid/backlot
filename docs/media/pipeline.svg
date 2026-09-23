@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560" font-family="Segoe UI, system-ui, -apple-system, sans-serif">
+  <defs>
+    <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="2.2"/>
+    </filter>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#9aa4b2"/>
+    </marker>
+    <marker id="arrT" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#4cc2a0"/>
+    </marker>
+    <style>
+      .t { fill: #e7ebf0; font-size: 14px; }
+      .s { fill: #9aa4b2; font-size: 11.5px; }
+      .m { fill: #9aa4b2; font-size: 11px; font-family: Cascadia Mono, SF Mono, Menlo, monospace; }
+      .h { fill: #5f6975; font-size: 11px; letter-spacing: 1.4px; }
+      .box { fill: #15181c; stroke: #2e353e; stroke-width: 1.5; }
+      .node { fill: #101214; stroke: #3a424c; stroke-width: 1.3; }
+      .ln { stroke: #9aa4b2; stroke-width: 1.5; fill: none; }
+      .ws { stroke: #4cc2a0; stroke-width: 1.5; fill: none; stroke-dasharray: 5 4; }
+    </style>
+  </defs>
+
+  <rect width="960" height="560" fill="#0a0b0d"/>
+  <text x="32" y="40" class="t" font-size="18" font-weight="600">One click, one ComfyUI graph, six stages you can watch</text>
+  <text x="32" y="62" class="s">Everything runs on localhost. The app never draws a state it did not receive from the server.</text>
+
+  <!-- browser -->
+  <g filter="url(#rough)">
+    <rect x="32" y="92" width="250" height="290" rx="14" class="box"/>
+  </g>
+  <text x="50" y="118" class="h">BROWSER · REACT</text>
+  <g>
+    <rect x="50" y="132" width="214" height="52" rx="9" class="node"/>
+    <text x="64" y="153" class="t" font-size="13">Compose chips + cast</text>
+    <text x="64" y="171" class="s">shot size, lens, look, &lt;image1&gt; = Idris</text>
+    <rect x="50" y="198" width="214" height="52" rx="9" class="node"/>
+    <text x="64" y="219" class="t" font-size="13">composePrompt()</text>
+    <text x="64" y="237" class="s">one string, the only source of truth</text>
+    <rect x="50" y="264" width="214" height="52" rx="9" class="node"/>
+    <text x="64" y="285" class="t" font-size="13">buildGraph()</text>
+    <text x="64" y="303" class="s">API-format JSON, stable node ids</text>
+    <rect x="50" y="330" width="214" height="40" rx="9" class="node" style="stroke:#4cc2a0"/>
+    <text x="64" y="355" class="t" font-size="13" style="fill:#4cc2a0">run reducer → timeline</text>
+    <path d="M157 184 v12" class="ln" marker-end="url(#arr)"/>
+    <path d="M157 250 v12" class="ln" marker-end="url(#arr)"/>
+  </g>
+
+  <!-- proxy -->
+  <g filter="url(#rough)">
+    <rect x="318" y="182" width="130" height="118" rx="12" class="box"/>
+  </g>
+  <text x="332" y="206" class="h">VITE PROXY</text>
+  <text x="332" y="230" class="s">strips Origin,</text>
+  <text x="332" y="246" class="s">Referer, Sec-Fetch-*</text>
+  <text x="332" y="270" class="m">/api  /internal</text>
+  <text x="332" y="287" class="m">HTTP + WebSocket</text>
+
+  <path d="M264 290 C 290 290, 296 262, 316 262" class="ln" marker-end="url(#arr)"/>
+  <text x="270" y="314" class="m">POST /prompt</text>
+  <path d="M383 300 C 383 346, 310 352, 266 352" class="ws" marker-end="url(#arrT)"/>
+  <text x="394" y="318" class="m" font-size="10" style="fill:#4cc2a0">ws events</text>
+  <text x="394" y="331" class="m" font-size="10" style="fill:#4cc2a0">executing</text>
+  <text x="394" y="344" class="m" font-size="10" style="fill:#4cc2a0">progress</text>
+  <text x="394" y="357" class="m" font-size="10" style="fill:#4cc2a0">previews</text>
+  <text x="394" y="370" class="m" font-size="10" style="fill:#4cc2a0">logs</text>
+
+  <!-- comfy -->
+  <g filter="url(#rough)">
+    <rect x="484" y="92" width="444" height="290" rx="14" class="box"/>
+  </g>
+  <text x="502" y="118" class="h">COMFYUI · --lowvram · 127.0.0.1:8188</text>
+  <path d="M448 241 h34" class="ln" marker-end="url(#arr)"/>
+
+  <!-- loaders column -->
+  <rect x="502" y="134" width="166" height="40" rx="8" class="node"/>
+  <text x="512" y="151" class="t" font-size="12">1 UnetLoaderGGUF</text>
+  <text x="512" y="166" class="m" font-size="10">Q4_K · 4.2 GB</text>
+  <rect x="502" y="182" width="166" height="40" rx="8" class="node"/>
+  <text x="512" y="199" class="t" font-size="12">2 CLIPLoader</text>
+  <text x="512" y="214" class="m" font-size="10">Qwen3-VL w4a8 · 6.3 GB</text>
+  <rect x="502" y="230" width="166" height="40" rx="8" class="node"/>
+  <text x="512" y="247" class="t" font-size="12">3 VAELoader</text>
+  <text x="512" y="262" class="m" font-size="10">bf16 · 0.7 GB</text>
+  <rect x="502" y="278" width="166" height="40" rx="8" class="node" stroke-dasharray="4 3"/>
+  <text x="512" y="295" class="t" font-size="12">101+ LoadImage</text>
+  <text x="512" y="310" class="m" font-size="10">cast photos, 0-4</text>
+
+  <!-- encode -->
+  <rect x="694" y="182" width="106" height="88" rx="8" class="node"/>
+  <text x="703" y="202" class="t" font-size="12">4 TextEncode</text>
+  <text x="703" y="217" class="t" font-size="12">QwenImage21</text>
+  <text x="703" y="236" class="s" font-size="10.5">text + vision</text>
+  <text x="703" y="250" class="s" font-size="10.5">+ VAE ref latents</text>
+  <path d="M668 202 h24" class="ln" marker-end="url(#arr)"/>
+  <path d="M668 298 C 680 298, 680 262, 692 260" class="ln" marker-end="url(#arr)"/>
+  <path d="M668 250 h24" class="ln" marker-end="url(#arr)"/>
+
+  <!-- sampler -->
+  <rect x="810" y="134" width="104" height="64" rx="8" class="node" style="stroke:#4cc2a0"/>
+  <text x="820" y="154" class="t" font-size="12">6 KSampler</text>
+  <text x="820" y="170" class="s" font-size="10.5">25 steps, euler</text>
+  <text x="820" y="185" class="s" font-size="10.5" style="fill:#4cc2a0">real n / 25</text>
+  <path d="M668 154 C 720 150, 760 160, 808 162" class="ln" marker-end="url(#arr)"/>
+  <path d="M800 210 C 806 206, 802 190, 808 186" class="ln" marker-end="url(#arr)"/>
+
+  <rect x="810" y="218" width="104" height="40" rx="8" class="node"/>
+  <text x="820" y="243" class="t" font-size="12">7 VAEDecode</text>
+  <rect x="810" y="278" width="104" height="40" rx="8" class="node"/>
+  <text x="820" y="303" class="t" font-size="12">8 SaveImage</text>
+  <path d="M862 198 v18" class="ln" marker-end="url(#arr)"/>
+  <path d="M862 258 v18" class="ln" marker-end="url(#arr)"/>
+  <text x="694" y="300" class="s" font-size="10.5">5 EmptyLatent</text>
+  <text x="694" y="314" class="s" font-size="10.5">(folded into encode)</text>
+  <text x="502" y="350" class="s">9 QwenImage21Cache is emitted only when overriding the</text>
+  <text x="502" y="366" class="s">prefix KV cache defaults. At defaults it changes nothing.</text>
+
+  <!-- stages strip -->
+  <text x="32" y="422" class="h">WHAT THE TIMELINE SHOWS · EIGHT NODES FOLDED INTO SIX STAGES</text>
+  <g font-size="12">
+    <rect x="32" y="436" width="140" height="62" rx="10" fill="#101214" stroke="#d8873f"/>
+    <text x="46" y="458" class="t" font-size="12">1 · LOAD WEIGHTS</text>
+    <text x="46" y="476" class="s" font-size="10.5">nodes 1 (+9)</text>
+    <text x="46" y="490" class="s" font-size="10.5" style="fill:#f0b278">no fraction: sweep</text>
+
+    <rect x="182" y="436" width="140" height="62" rx="10" fill="#101214" stroke="#d8873f"/>
+    <text x="196" y="458" class="t" font-size="12">2 · TEXT ENCODER</text>
+    <text x="196" y="476" class="s" font-size="10.5">node 2</text>
+    <text x="196" y="490" class="s" font-size="10.5" style="fill:#f0b278">no fraction: sweep</text>
+
+    <rect x="332" y="436" width="140" height="62" rx="10" fill="#101214" stroke="#d8873f"/>
+    <text x="346" y="458" class="t" font-size="12">3 · ENCODE</text>
+    <text x="346" y="476" class="s" font-size="10.5">nodes 4, 5, 101+</text>
+    <text x="346" y="490" class="s" font-size="10.5" style="fill:#f0b278">no fraction: sweep</text>
+
+    <rect x="482" y="436" width="140" height="62" rx="10" fill="#0e1a17" stroke="#4cc2a0"/>
+    <text x="496" y="458" class="t" font-size="12">4 · SAMPLE</text>
+    <text x="496" y="476" class="s" font-size="10.5">node 6</text>
+    <rect x="496" y="484" width="112" height="5" rx="2" fill="#22272e"/>
+    <rect x="496" y="484" width="67" height="5" rx="2" fill="#4cc2a0"/>
+
+    <rect x="632" y="436" width="140" height="62" rx="10" fill="#101214" stroke="#2e353e"/>
+    <text x="646" y="458" class="t" font-size="12">5 · DECODE</text>
+    <text x="646" y="476" class="s" font-size="10.5">nodes 3, 7</text>
+
+    <rect x="782" y="436" width="146" height="62" rx="10" fill="#101214" stroke="#2e353e"/>
+    <text x="796" y="458" class="t" font-size="12">6 · SAVE</text>
+    <text x="796" y="476" class="s" font-size="10.5">node 8</text>
+  </g>
+  <text x="32" y="530" class="s">Stages ComfyUI skips because the result is still in memory arrive as <tspan style="fill:#8fa6d6">execution_cached</tspan> and are drawn blue, "cached", never as instant work.</text>
+</svg>

@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" width="960" height="470" font-family="Segoe UI, system-ui, -apple-system, sans-serif">
+  <defs>
+    <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="11"/>
+      <feDisplacementMap in="SourceGraphic" scale="2.2"/>
+    </filter>
+    <pattern id="sweep" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="8" height="8" fill="#1b1710"/>
+      <rect width="3" height="8" fill="#d8873f" opacity="0.55"/>
+    </pattern>
+    <linearGradient id="scan" x1="0" x2="1">
+      <stop offset="0" stop-color="#d8873f" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#f0b278" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#d8873f" stop-opacity="0"/>
+    </linearGradient>
+    <style>
+      .t { fill: #e7ebf0; font-size: 13px; }
+      .s { fill: #9aa4b2; font-size: 11.5px; }
+      .m { fill: #9aa4b2; font-size: 11px; font-family: Cascadia Mono, SF Mono, Menlo, monospace; }
+      .h { fill: #5f6975; font-size: 11px; letter-spacing: 1.4px; }
+      .box { fill: #15181c; stroke: #2e353e; stroke-width: 1.5; }
+    </style>
+  </defs>
+
+  <rect width="960" height="470" fill="#0a0b0d"/>
+  <text x="32" y="40" class="t" font-size="18" font-weight="600">Three kinds of waiting, drawn three different ways</text>
+  <text x="32" y="62" class="s">The app never animates a fraction it does not have. Each kind of wait gets its own honest drawing.</text>
+
+  <!-- to-scale bar: 882px = 91.6 s (0.1 + 8.0 + 83.5) -->
+  <text x="32" y="102" class="h">WHERE A COLD RUN'S TIME GOES, TO SCALE</text>
+  <rect x="40" y="116" width="4" height="34" fill="#4a515b"/>
+  <rect x="44" y="116" width="77" height="34" fill="url(#sweep)"/>
+  <rect x="121" y="116" width="802" height="34" fill="#0e1a17" stroke="#4cc2a0" stroke-width="1"/>
+  <rect x="121" y="116" width="802" height="34" fill="#4cc2a0" opacity="0.28"/>
+  <g stroke="#4cc2a0" stroke-width="1" opacity="0.8"><path d="M153.1 116v34M185.2 116v34M217.2 116v34M249.3 116v34M281.4 116v34M313.5 116v34M345.6 116v34M377.6 116v34M409.7 116v34M441.8 116v34M473.9 116v34M506.0 116v34M538.0 116v34M570.1 116v34M602.2 116v34M634.3 116v34M666.4 116v34M698.4 116v34M730.5 116v34M762.6 116v34M794.7 116v34M826.8 116v34M858.8 116v34M890.9 116v34"/></g>
+  <text x="420" y="138" class="t">sampling 83.5 s · 25 real steps</text>
+
+  <path d="M42 156 v78" stroke="#5f6975"/>
+  <text x="48" y="238" class="m" font-size="10">loader nodes 0.1 s (weights read lazily, nothing moved yet)</text>
+  
+  <path d="M100 156 v52" stroke="#d8873f"/>
+  <text x="108" y="204" class="m" font-size="10" style="fill:#f0b278">moving weights into VRAM 8.0 s, inside the sampler,</text>
+  <text x="108" y="217" class="m" font-size="10" style="fill:#f0b278">before step 1: silent, so it gets its own amber segment</text>
+  <text x="923" y="184" class="m" font-size="10" text-anchor="end">cold-run figures from app/README.md, RTX 4060 Laptop</text>
+
+  <!-- three legend cards -->
+  <text x="32" y="270" class="h">THE RULE: A FILLING BAR ONLY FOR A REAL NUMERATOR AND DENOMINATOR</text>
+
+  <g filter="url(#rough)"><rect x="32" y="282" width="286" height="138" rx="12" class="box"/></g>
+  <rect x="48" y="300" width="254" height="8" rx="4" fill="#22272e"/>
+  <rect x="140" y="300" width="70" height="8" rx="4" fill="url(#scan)"/>
+  <text x="48" y="332" class="t" style="fill:#f0b278">Amber sweep · no fraction</text>
+  <text x="48" y="352" class="s">Loading and moving 10 GB of weights emits</text>
+  <text x="48" y="368" class="s">nothing. A scanner crosses a rail that never</text>
+  <text x="48" y="384" class="s">fills, beside an honest elapsed clock and the</text>
+  <text x="48" y="400" class="s">server's own log.</text>
+
+  <g filter="url(#rough)"><rect x="337" y="282" width="286" height="138" rx="12" class="box"/></g>
+  <rect x="353" y="300" width="254" height="8" rx="4" fill="#22272e"/>
+  <rect x="353" y="300" width="132" height="8" rx="4" fill="#4cc2a0"/>
+  <text x="569" y="296" class="m" font-size="10" style="fill:#4cc2a0">13/25</text>
+  <text x="353" y="332" class="t" style="fill:#4cc2a0">Teal fill · a true fraction</text>
+  <text x="353" y="352" class="s">KSampler reports step n of 25, so this bar</text>
+  <text x="353" y="368" class="s">fills. The counter jumps 12 → 13 and is never</text>
+  <text x="353" y="384" class="s">eased: easing would claim a sub-step position</text>
+  <text x="353" y="400" class="s">nobody measured.</text>
+
+  <g filter="url(#rough)"><rect x="642" y="282" width="286" height="138" rx="12" class="box"/></g>
+  <rect x="658" y="300" width="254" height="8" rx="4" fill="#101318" stroke="#6e8bd6" stroke-dasharray="3 3"/>
+  <text x="658" y="332" class="t" style="fill:#8fa6d6">Blue · work not done</text>
+  <text x="658" y="352" class="s">Nodes ComfyUI skipped (still in memory) are</text>
+  <text x="658" y="368" class="s">shown as "cached", not as a 0.0 s stage.</text>
+  <text x="658" y="384" class="s">Numbers from earlier runs carry a <tspan style="fill:#e7ebf0">~</tspan> and</text>
+  <text x="658" y="400" class="s">say "last run", never "expected".</text>
+
+  <text x="32" y="452" class="m">receipt at the end of a warm run: 112s total — 7% waiting on disk and VRAM, 91% sampling on the GPU, 2% everything else.</text>
+</svg>
