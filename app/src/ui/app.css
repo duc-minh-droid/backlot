@@ -220,6 +220,9 @@
 .generate {
   position: relative;
   overflow: hidden;
+  /* The compose column scrolls; without this the flex column squeezed the button and
+     clipped its label once the shot form outgrew the viewport. */
+  flex-shrink: 0;
   margin-top: auto;
   padding: 12px;
   border: 1px solid var(--accent-dim);
