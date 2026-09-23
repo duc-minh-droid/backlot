@@ -62,7 +62,9 @@
 
 .columns {
   display: grid;
-  grid-template-columns: 380px minmax(520px, 1fr) 340px;
+  /* minmax(0, 1fr): a 520px floor made the three tracks overflow below ~1310px, and the
+     stage slid underneath the telemetry column. */
+  grid-template-columns: 380px minmax(0, 1fr) 340px;
   gap: 16px;
   padding: 16px;
   min-height: 0;
@@ -78,6 +80,9 @@
 
 .stage {
   display: grid;
+  /* Without an explicit track the implicit column sizes to its widest child's min-content,
+     and the six timeline chips pushed the stage past its own grid cell. */
+  grid-template-columns: minmax(0, 1fr);
   grid-template-rows: minmax(0, 1fr) auto auto auto;
   gap: 12px;
   min-height: 0;
@@ -276,7 +281,8 @@
   position: relative;
   max-width: 420px;
   padding: 14px 16px;
-  background: rgba(10, 11, 13, 0.82);
+  /* Theme-aware: a hardcoded near-black plate read as a black box in light mode. */
+  background: color-mix(in srgb, var(--bg-1) 88%, transparent);
   backdrop-filter: blur(8px);
   border-radius: var(--r-md);
   border: 1px solid var(--line-1);
@@ -301,6 +307,8 @@
   padding: 4px 8px;
   border-radius: var(--r-sm);
   background: rgba(10, 11, 13, 0.7);
+  /* Sits on the image, so it stays light-on-dark in both themes. */
+  color: #f2f3f5;
   font-size: 12px;
 }
 
@@ -587,6 +595,12 @@
 }
 
 /* ---------- responsive ---------- */
+
+@media (max-width: 1439px) {
+  .columns {
+    grid-template-columns: 330px minmax(0, 1fr) 300px;
+  }
+}
 
 @media (max-width: 1199px) {
   .columns {

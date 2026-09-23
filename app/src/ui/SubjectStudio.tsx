@@ -119,8 +119,7 @@ export function SubjectStudio({ subject, onAdd }: Props) {
             animate="visible"
             exit="exit"
           >
-            Generating {generation.pendingId ? '' : ''}
-            {run?.status === 'running' ? 'now' : 'shortly'} — the full pipeline, timings and live
+            Generating {run?.status === 'running' ? 'now' : 'shortly'} — the full pipeline, timings and live
             preview are on the Generate tab.
           </motion.p>
         )}

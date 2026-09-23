@@ -9,9 +9,10 @@ import { SubjectEditor } from './SubjectEditor'
 
 interface Props {
   library: SubjectLibrary
+  hidden?: boolean
 }
 
-export function LibraryView({ library }: Props) {
+export function LibraryView({ library, hidden = false }: Props) {
   const [editing, setEditing] = useState<Subject | null>(null)
   const [confirmDelete, setConfirmDelete] = useState<Subject | null>(null)
   const [checks, setChecks] = useState<Record<string, FileCheck>>({})
@@ -61,7 +62,7 @@ export function LibraryView({ library }: Props) {
   }, [library.subjects, checks])
 
   return (
-    <main className="library">
+    <main className="library" hidden={hidden}>
       <header className="library-head">
         <div>
           <h1 className="library-title">Library</h1>

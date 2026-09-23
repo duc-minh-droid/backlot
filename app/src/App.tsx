@@ -178,7 +178,10 @@ export default function App() {
           </aside>
         </div>
 
-        {view === 'library' && <LibraryView library={library} />}
+        {/* Also hidden rather than unmounted: a portrait generation started in the Library
+            keeps its pending run and the open editor in component state, so leaving to watch
+            the pipeline on the Generate tab used to drop the finished photo on the floor. */}
+        <LibraryView library={library} hidden={view !== 'library'} />
 
         <LiveRegion run={run} stages={stageViews(run, 0)} />
       </div>
