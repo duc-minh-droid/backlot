@@ -600,6 +600,13 @@
   .columns {
     grid-template-columns: 330px minmax(0, 1fr) 300px;
   }
+  /* Six chips share ~590px here; clipping to "1 · LOAD I" hid which stage was which. */
+  .chip-head {
+    white-space: normal;
+    align-items: flex-start;
+    line-height: 1.25;
+    letter-spacing: 0.02em;
+  }
 }
 
 @media (max-width: 1199px) {
